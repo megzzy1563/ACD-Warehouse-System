@@ -1,0 +1,572 @@
+/* src/styles/DashboardStyles.css */
+
+.dashboard-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Dashboard Header */
+  .dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .dashboard-title i {
+    font-size: 1.5rem;
+    color: #3498db;
+    animation: pulse 2s infinite ease-in-out;
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .dashboard-title h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    position: relative;
+  }
+  
+  .dashboard-title h2:after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border-radius: 2px;
+  }
+  
+  .dashboard-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #4a5568;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .dashboard-date:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-date i {
+    color: #3498db;
+  }
+  
+  /* Summary Grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .summary-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .summary-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin-right: 1.2rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .card-icon:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0.15;
+    z-index: -1;
+    transition: all 0.3s ease;
+  }
+  
+  .summary-card:hover .card-icon:before {
+    transform: scale(1.2);
+  }
+  
+  .card-items .card-icon {
+    color: #f39c12;
+  }
+  
+  .card-in .card-icon {
+    color: #27ae60;
+  }
+  
+  .card-out .card-icon {
+    color: #e74c3c;
+  }
+  
+  .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+  }
+  
+  .card-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-end;
+  }
+  
+  .card-trend {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .card-trend.positive {
+    color: #27ae60;
+  }
+  
+  .card-trend.negative {
+    color: #e74c3c;
+  }
+  
+  .sparkline {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 40px;
+    opacity: 0.2;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: contain;
+    transition: all 0.3s ease;
+  }
+  
+  .summary-card:hover .sparkline {
+    opacity: 0.4;
+  }
+  
+  .items-sparkline {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'%3E%3Cpath d='M0,20 Q10,15 20,25 T40,15 T60,30 T80,5 T100,15' stroke='%23f39c12' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  }
+  
+  .in-sparkline {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'%3E%3Cpath d='M0,30 Q10,10 20,5 T40,20 T60,10 T80,15 T100,5' stroke='%2327ae60' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  }
+  
+  .out-sparkline {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'%3E%3Cpath d='M0,5 Q10,20 20,10 T40,25 T60,15 T80,30 T100,20' stroke='%23e74c3c' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  }
+  
+  /* Chart Card */
+  .chart-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .chart-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .chart-header {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #edf2f7;
+  }
+  
+  .chart-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .chart-title i {
+    color: #3498db;
+    font-size: 1.1rem;
+  }
+  
+  .chart-title h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2c3e50;
+  }
+  
+  .chart-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .timeframe-selector {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .timeframe-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: #f8f9fa;
+    color: #4a5568;
+    border: 1px solid #edf2f7;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .timeframe-btn:hover {
+    background-color: #edf2f7;
+  }
+  
+  .timeframe-btn.active {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+  }
+  
+  .chart-legend {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #4a5568;
+  }
+  
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+  
+  .legend-color.in {
+    background-color: #27ae60;
+  }
+  
+  .legend-color.out {
+    background-color: #e74c3c;
+  }
+  
+  .chart-body {
+    position: relative;
+    padding: 1.5rem;
+    height: 350px;
+  }
+  
+  .chart-container {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .chart-loading, 
+  .chart-empty {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .chart-empty i {
+    font-size: 3rem;
+    color: #cbd5e0;
+  }
+  
+  .chart-loading p,
+  .chart-empty p {
+    margin: 0;
+    font-size: 1rem;
+    color: #7f8c8d;
+  }
+  
+  /* Metrics Grid */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .metric-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .metric-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  .metric-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .metric-icon:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background-color: currentColor;
+    opacity: 0.15;
+    z-index: -1;
+  }
+  
+  .low-stock .metric-icon {
+    color: #e74c3c;
+  }
+  
+  .total-value .metric-icon {
+    color: #27ae60;
+  }
+  
+  .efficiency .metric-icon {
+    color: #3498db;
+  }
+  
+  .pending .metric-icon {
+    color: #f39c12;
+  }
+  
+  .metric-content {
+    flex: 1;
+  }
+  
+  .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.3rem;
+  }
+  
+  .metric-label {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+  
+  /* Dark Mode Support */
+  body.dark-mode .dashboard-title h2 {
+    color: #ecf0f1;
+  }
+  
+  body.dark-mode .dashboard-date {
+    background-color: #1f2c3d;
+    color: #cbd5e0;
+  }
+  
+  body.dark-mode .summary-card,
+  body.dark-mode .chart-card,
+  body.dark-mode .metric-card {
+    background-color: #1a2a48;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  body.dark-mode .card-label,
+  body.dark-mode .metric-label {
+    color: #a5b1c2;
+  }
+  
+  body.dark-mode .card-value,
+  body.dark-mode .metric-value {
+    color: #ecf0f1;
+  }
+  
+  body.dark-mode .chart-title h3 {
+    color: #ecf0f1;
+  }
+  
+  body.dark-mode .chart-header {
+    border-color: #2a3a5a;
+  }
+  
+  body.dark-mode .timeframe-btn {
+    background-color: #1f2c3d;
+    border-color: #2a3a5a;
+    color: #cbd5e0;
+  }
+  
+  body.dark-mode .timeframe-btn:hover {
+    background-color: #2a3a5a;
+  }
+  
+  body.dark-mode .legend-item {
+    color: #cbd5e0;
+  }
+  
+  body.dark-mode .chart-loading, 
+  body.dark-mode .chart-empty {
+    background-color: rgba(26, 42, 72, 0.8);
+  }
+  
+  body.dark-mode .chart-loading p,
+  body.dark-mode .chart-empty p {
+    color: #cbd5e0;
+  }
+  
+  body.dark-mode .loading-spinner {
+    border-color: #2a3a5a;
+    border-top-color: #3498db;
+  }
+  
+  body.dark-mode .chart-empty i {
+    color: #4a5568;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 992px) {
+    .dashboard-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .chart-controls {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    
+    .timeframe-selector {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .summary-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .metrics-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .chart-body {
+      height: 300px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .chart-body {
+      height: 250px;
+    }
+  }
+  /* Add these updates to your DashboardStyles.css file */
+
+/* Chart legend colors for Stock In (blue) and Stock Out (violet) */
+.chart-legend .legend-item .legend-color.in {
+    background-color: #3498db; /* Blue */
+  }
+  
+  .chart-legend .legend-item .legend-color.out {
+    background-color: #9b59b6; /* Violet */
+  }
+  
+  /* Optional: Update summary card colors to match if desired */
+  .summary-card.card-in .card-icon {
+    background-color: rgba(52, 152, 219, 0.1); /* Light blue background */
+    color: #3498db; /* Blue icon */
+  }
+  
+  .summary-card.card-out .card-icon {
+    background-color: rgba(155, 89, 182, 0.1); /* Light violet background */
+    color: #9b59b6; /* Violet icon */
+  }
+  
+  /* Optional: Update timeframe button active state to match the blue theme */
+  .timeframe-btn.active {
+    background-color: #3498db; /* Blue */
+    color: white;
+  }

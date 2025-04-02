@@ -1,0 +1,1021 @@
+/* Scanner Styles */
+.scanner-container {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  }
+  
+  .scanner-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .scanner-frame {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    pointer-events: none;
+    box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.4);
+  }
+  
+  .corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-color: #2196F3;
+    border-style: solid;
+    border-width: 0;
+  }
+  
+  .top-left {
+    top: -2px;
+    left: -2px;
+    border-top-width: 4px;
+    border-left-width: 4px;
+  }
+  
+  .top-right {
+    top: -2px;
+    right: -2px;
+    border-top-width: 4px;
+    border-right-width: 4px;
+  }
+  
+  .bottom-left {
+    bottom: -2px;
+    left: -2px;
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+  }
+  
+  .bottom-right {
+    bottom: -2px;
+    right: -2px;
+    border-bottom-width: 4px;
+    border-right-width: 4px;
+  }
+  
+  .scanner-laser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: rgba(33, 150, 243, 0.7);
+    box-shadow: 0 0 6px rgba(33, 150, 243, 0.9);
+    z-index: 10;
+    animation: laserScan 2s infinite ease-in-out;
+  }
+  
+  @keyframes laserScan {
+    0% { top: 0; }
+    50% { top: 100%; }
+    50.1% { top: 0; }
+    100% { top: 100%; }
+  }
+  
+  .scanner-horizontal-line, .scanner-vertical-line {
+    position: absolute;
+    background-color: rgba(33, 150, 243, 0.5);
+  }
+  
+  .scanner-horizontal-line {
+    height: 1px;
+    left: 0;
+    right: 0;
+  }
+  
+  .scanner-horizontal-line.top {
+    top: 33%;
+  }
+  
+  .scanner-horizontal-line.bottom {
+    bottom: 33%;
+  }
+  
+  .scanner-vertical-line {
+    width: 1px;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .scanner-vertical-line.left {
+    left: 33%;
+  }
+  
+  .scanner-vertical-line.right {
+    right: 33%;
+  }
+  
+  .realtime-results {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    z-index: 5;
+    border-left: 4px solid #4CAF50;
+    animation: fadeIn 0.3s ease-in-out;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .realtime-badge {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  
+  .realtime-badge i {
+    color: #4CAF50;
+    margin-right: 8px;
+  }
+  
+  .realtime-info {
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  
+  .capture-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    color: #333;
+    border: none;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+  
+  .capture-btn.ready {
+    background-color: #4CAF50;
+    color: white;
+    transform: translateX(-50%) scale(1.1);
+  }
+  
+  .capture-btn.ready:before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    border: 2px solid white;
+    animation: pulse 1.5s infinite;
+  }
+  
+  .capture-btn:disabled {
+    opacity: 0.6;
+  }
+  
+  .capture-btn:active {
+    transform: translateX(-50%) scale(0.95);
+  }
+  
+  .capture-btn.ready:active {
+    transform: translateX(-50%) scale(1.05);
+  }
+  
+  .scanner-status {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    z-index: 4;
+  }
+  
+  .scanner-status.processing .scanning-indicator {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 30px;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .scanner-status.processing .scanning-indicator i {
+    margin-right: 8px;
+    color: #2196F3;
+  }
+  
+  .scanner-status.detected {
+    border: 2px solid rgba(76, 175, 80, 0.5);
+    box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
+    animation: detect-pulse 1.5s infinite;
+  }
+  
+  .uploaded-image-container {
+    position: relative;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+  
+  .uploaded-barcode-image {
+    width: 100%;
+    display: block;
+    border-radius: 8px;
+  }
+  
+  .analyzing-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .analyzing-badge-text, .success-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  .success-badge {
+    background-color: rgba(76, 175, 80, 0.8);
+  }
+  
+  .analyzing-badge-text i, .success-badge i {
+    margin-right: 8px;
+  }
+  
+  .retry-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .retry-btn i {
+    margin-right: 8px;
+  }
+  
+  .upload-image-btn {
+    margin: 10px auto;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 16px;
+  }
+  
+  .upload-image-btn i {
+    margin-right: 8px;
+  }
+  
+  .error-message {
+    background-color: #ffebee;
+    color: #d32f2f;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .error-message i {
+    margin-right: 8px;
+  }
+  
+  .manual-entry-form {
+    margin-top: 20px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+  }
+  
+  .form-group {
+    padding: 0 10px;
+    margin-bottom: 15px;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+  }
+  
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .form-group input.error {
+    border-color: #d32f2f;
+    background-color: #ffebee;
+  }
+  
+  .required {
+    color: #d32f2f;
+  }
+  
+  .scanner-instructions {
+    margin-bottom: 15px;
+    background-color: #e3f2fd;
+    border-left: 4px solid #2196F3;
+    padding: 12px 15px;
+    border-radius: 6px;
+    line-height: 1.4;
+  }
+  
+  .scanner-tip {
+    font-size: 13px;
+    color: #555;
+    margin-top: 8px;
+  }
+  
+  /* Camera selection */
+  .camera-selection {
+    margin-bottom: 15px;
+  }
+  
+  .camera-select {
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 5px;
+    background-color: #f9f9f9;
+    font-size: 15px;
+  }
+  
+  /* Loading indicator for when camera is initializing */
+  .camera-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 4;
+  }
+  
+  .spinner {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #2196F3;
+    animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes detect-pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.5);
+    }
+    70% {
+      box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Original Inventory styles */
+  .inventory-actions-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-box {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+  }
+  
+  .search-box i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: #eee;
+    color: #333;
+    transition: all 0.2s;
+  }
+  
+  .action-btn i {
+    margin-right: 6px;
+  }
+  
+  .action-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .add-btn {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .add-btn:hover {
+    background-color: #3d8b40;
+  }
+  
+  .excel-btn {
+    background-color: #107c41;
+    color: white;
+  }
+  
+  .excel-btn:hover {
+    background-color: #0c6232;
+  }
+  
+  .scan-btn {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .scan-btn:hover {
+    background-color: #0c7cd5;
+  }
+  
+  .filter-btn {
+    position: relative;
+  }
+  
+  .filter-btn.active {
+    background-color: #ffeb3b;
+    color: #333;
+  }
+  
+  .filter-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #f44336;
+  }
+  
+  .inventory-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+  
+  .active-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+  }
+  
+  .active-filters span {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  .filter-tag {
+    display: flex;
+    align-items: center;
+    background-color: #e0e0e0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+  }
+  
+  .filter-tag i {
+    margin-right: 5px;
+    color: #555;
+  }
+  
+  .filter-tag button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+    color: #777;
+  }
+  
+  .clear-all-btn {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #f44336;
+    font-size: 13px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .clear-all-btn i {
+    margin-right: 5px;
+  }
+  
+  .inventory-table-container {
+    overflow-x: auto;
+  }
+  
+  .inventory-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .inventory-table th,
+  .inventory-table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  .inventory-table th {
+    background-color: #1b6495;
+    font-weight: 500;
+    color: #000;
+    color: #000;
+    
+  }
+  
+  .inventory-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .inventory-table tbody tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .checkbox-column {
+    width: 40px;
+  }
+  
+  .date-column {
+    width: 110px;
+  }
+  
+  .parts-number-column {
+    width: 150px;
+  }
+  
+  .parts-name-column {
+    min-width: 200px;
+  }
+  
+  .component-column {
+    width: 130px;
+  }
+  
+  .quantity-column {
+    width: 80px;
+  }
+  
+  .price-column {
+    width: 120px;
+  }
+  
+  .image-column {
+    width: 80px;
+  }
+  
+  .action-column {
+    width: 120px;
+  }
+  
+  .image-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+  }
+  
+  .image-cell img {
+    max-height: 40px;
+    max-width: 60px;
+    object-fit: contain;
+  }
+  
+  .action-cell {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .view-btn {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .view-btn:hover {
+    background-color: #0c7cd5;
+  }
+  
+  .edit-btn {
+    background-color: #ff9800;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: #ef6c00;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .showing-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .showing-info span {
+    margin-right: 10px;
+  }
+  
+  .showing-info select {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .records-info {
+    color: #666;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .pagination-btn {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .pagination-btn:hover:not(:disabled) {
+    background-color: #f1f1f1;
+  }
+  
+  .pagination-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .pagination-btn.active {
+    background-color: #2196f3;
+    color: white;
+    border-color: #2196f3;
+  }
+  
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal-header h3 i {
+    margin-right: 10px;
+    color: #2196f3;
+  }
+  
+  .close-button {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+  }
+  
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  /* Filter modal */
+  .filter-modal {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    width: 90%;
+    max-width: 600px;
+  }
+  
+  .filter-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .filter-modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .filter-modal-header h3 i {
+    margin-right: 10px;
+    color: #ff9800;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+  }
+  
+  .filter-modal-body {
+    padding: 20px;
+  }
+  
+  .filter-section {
+    margin-bottom: 20px;
+  }
+  
+  .filter-section h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+  
+  .filter-section h4 i {
+    margin-right: 8px;
+    color: #555;
+  }
+  
+  .filter-inputs {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .filter-input-group {
+    flex: 1;
+  }
+  
+  .filter-input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .filter-input-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .component-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .component-checkbox {
+    min-width: 120px;
+  }
+  
+  .component-checkbox label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .component-checkbox input {
+    margin-right: 8px;
+  }
+  
+  .filter-modal-footer {
+    padding: 15px 20px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  .primary-btn {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .primary-btn:hover:not(:disabled) {
+    background-color: #0c7cd5;
+  }
+  
+  .secondary-btn {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .secondary-btn:hover:not(:disabled) {
+    background-color: #e0e0e0;
+  }
+  
+  .btn-light {
+    background-color: #f5f5f5;
+    color: #333;
+  }
+  
+  .btn-light:hover:not(:disabled) {
+    background-color: #e0e0e0;
+  }
+  
+  .btn-primary {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .btn-primary:hover:not(:disabled) {
+    background-color: #0c7cd5;
+  }

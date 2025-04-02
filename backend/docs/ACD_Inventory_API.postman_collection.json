@@ -1,0 +1,622 @@
+{
+	"info": {
+		"_postman_id": "72e5d7be-8f9c-4e8d-8c0a-9a3f9c5e8d7b",
+		"name": "ACD Inventory API",
+		"description": "API Collection for the ACD Inventory Management System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test User\",\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\",\n    \"role\": \"user\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						},
+						"description": "Register a new user in the system"
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						},
+						"description": "Login a user and receive an authentication token"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						},
+						"description": "Get the currently logged in user's profile"
+					},
+					"response": []
+				},
+				{
+					"name": "Update User Details",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Updated Name\",\n    \"email\": \"updated@example.com\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/updatedetails",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"updatedetails"
+							]
+						},
+						"description": "Update the current user's profile details"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\": \"password123\",\n    \"newPassword\": \"newpassword123\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/updatepassword",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"updatepassword"
+							]
+						},
+						"description": "Update the current user's password"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						},
+						"description": "Logout the current user"
+					},
+					"response": []
+				}
+			],
+			"description": "Authentication related endpoints"
+		},
+		{
+			"name": "Inventory",
+			"item": [
+				{
+					"name": "Get All Inventory Items",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/inventory?page=1&limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"inventory"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "Engine",
+									"disabled": true
+								},
+								{
+									"key": "component",
+									"value": "Engine",
+									"disabled": true
+								},
+								{
+									"key": "minPrice",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "maxPrice",
+									"value": "5000",
+									"disabled": true
+								},
+								{
+									"key": "minQuantity",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "maxQuantity",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "startDate",
+									"value": "2025-01-01",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-03-31",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get all inventory items with optional filtering and pagination"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Inventory Item",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/inventory/{{itemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"{{itemId}}"
+							]
+						},
+						"description": "Get a single inventory item by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Inventory Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"partsName\": \"Test Part\",\n    \"partsNumber\": \"TEST-123\",\n    \"component\": \"Engine\",\n    \"quantity\": 10,\n    \"itemPrice\": 1500,\n    \"rack\": \"A1\",\n    \"tax\": 180,\n    \"totalAmount\": 15180,\n    \"pic\": \"Test User\",\n    \"poNumber\": \"PO-TEST-001\",\n    \"ctplNumber\": \"CTPL-TEST-001\",\n    \"date\": \"15/03/2025\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/inventory",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"inventory"
+							]
+						},
+						"description": "Create a new inventory item"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Inventory Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"quantity\": 15,\n    \"itemPrice\": 1600,\n    \"tax\": 192,\n    \"totalAmount\": 24192\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/inventory/{{itemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"{{itemId}}"
+							]
+						},
+						"description": "Update an existing inventory item"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Inventory Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/inventory/{{itemId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"{{itemId}}"
+							]
+						},
+						"description": "Delete an inventory item (admin/manager only)"
+					},
+					"response": []
+				},
+				{
+					"name": "Process Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itemId\": \"{{itemId}}\",\n    \"transactionType\": \"in\",\n    \"quantity\": 5,\n    \"notes\": \"Stock replenishment\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/inventory/transaction",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"inventory",
+								"transaction"
+							]
+						},
+						"description": "Process stock in/out transaction"
+					},
+					"response": []
+				}
+			],
+			"description": "Inventory management endpoints"
+		},
+		{
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Get Daily Transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/daily?date=2025-03-15",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"daily"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2025-03-15"
+								}
+							]
+						},
+						"description": "Get daily transaction report for a specific date"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Stock Movement",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/stock-movement?timeframe=monthly",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"stock-movement"
+							],
+							"query": [
+								{
+									"key": "timeframe",
+									"value": "monthly",
+									"description": "Options: weekly, monthly, yearly"
+								}
+							]
+						},
+						"description": "Get stock movement data for charts"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Inventory Statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/inventory-stats",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"inventory-stats"
+							]
+						},
+						"description": "Get inventory statistics and summary data"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction History",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/api/reports/transactions?page=1&limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"reports",
+								"transactions"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "type",
+									"value": "in",
+									"disabled": true,
+									"description": "Options: in, out"
+								},
+								{
+									"key": "startDate",
+									"value": "2025-01-01",
+									"disabled": true
+								},
+								{
+									"key": "endDate",
+									"value": "2025-03-31",
+									"disabled": true
+								},
+								{
+									"key": "itemId",
+									"value": "{{itemId}}",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "Engine",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get transaction history with filters and pagination"
+					},
+					"response": []
+				}
+			],
+			"description": "Report generation endpoints"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Auto-capture token from login responses",
+					"if (pm.response.code === 200 || pm.response.code === 201) {",
+					"    const jsonData = pm.response.json();",
+					"    if (jsonData && jsonData.success && jsonData.data && jsonData.data.token) {",
+					"        pm.environment.set('token', jsonData.data.token);",
+					"        console.log('Token captured and saved to environment');",
+					"    }",
+					"    ",
+					"    // Capture first item ID for subsequent requests",
+					"    if (pm.request.url.toString().includes('/api/inventory') && ",
+					"        jsonData.data && Array.isArray(jsonData.data) && jsonData.data.length > 0) {",
+					"        pm.environment.set('itemId', jsonData.data[0]._id);",
+					"        console.log('Item ID captured:', jsonData.data[0]._id);",
+					"    }",
+					"    ",
+					"    // Capture created item ID",
+					"    if (pm.request.url.toString().includes('/api/inventory') && ",
+					"        pm.request.method === 'POST' && ",
+					"        jsonData.data && jsonData.data._id) {",
+					"        pm.environment.set('itemId', jsonData.data._id);",
+					"        console.log('New item ID captured:', jsonData.data._id);",
+					"    }",
+					"}"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
